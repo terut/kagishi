@@ -1,4 +1,4 @@
-# Kagishi
+# Kagishi [![Build Status](https://travis-ci.org/terut/kagishi.svg?branch=master)](https://travis-ci.org/terut/kagishi)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/kagishi`. To experiment with that code, run `bin/console` for an interactive prompt.
 
