@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["terut"]
   spec.email         = ["terut.dev+github@gmail.com"]
 
-  spec.summary       = %q{Magic link.}
-  spec.description   = %q{Magic link.}
-  spec.homepage      = "https://github.com/terut"
+  spec.summary       = %q{Handle token for magic link.}
+  spec.description   = %q{Handle token for magic link.}
+  spec.homepage      = "https://github.com/terut/kagishi"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
