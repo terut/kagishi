@@ -1,11 +1,21 @@
 require 'test_helper'
 
 class KagishiTest < Minitest::Test
-  def test_that_it_has_a_version_number
-    refute_nil ::Kagishi::VERSION
+  def test_issue_token
+    assert_match /\A[\w\-_]+\.[\w\-_]+\.[\w\-_]+/, Kagishi.issue_token("abc@example.com")
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_verify_token
+    email = "abc@example.com"
+    token = Kagishi.issue_token(email)
+    payload = Kagishi.verify_token(token)
+    assert_equal email, payload["email"]
+  end
+
+  def test_payload
+    email = "abc@example.com"
+    token = Kagishi.issue_token(email)
+    payload = Kagishi.payload(token)
+    assert_equal email, payload["email"]
   end
 end

@@ -3,3 +3,4 @@ require 'kagishi'
 
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'timecop'
