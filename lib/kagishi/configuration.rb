@@ -12,7 +12,9 @@ module Kagishi
   class Configuration
     def self.default_options
       @default_options ||= {
-        algorithm: 'HS256'
+        algorithm: 'HS256',
+        ttl: 15 * 60,
+        secret: ''
       }
     end
 
