@@ -9,15 +9,15 @@ module Kagishi
       begin
         payload, header = parse(token)
       rescue JWT::ExpiredSignature
-        nil
+        return nil
       end
 
-      payload
+      Payload.new(payload, header: header)
     end
 
     def payload(token)
       payload, header = parse(token, options: { verify_expiration: false })
-      payload
+      Payload.new(payload, header: header)
     end
 
     private

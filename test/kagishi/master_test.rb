@@ -22,8 +22,8 @@ class Kagishi::MasterTest < Minitest::Test
   end
 
   def test_verify_token
-    payload = { "email" => "abc@example.com", "foo" => "bar", "exp" => 1488392100 }
-    assert_equal payload, master.verify_token(token)
+    payload = { email: "abc@example.com", foo: "bar", exp: 1488392100 }
+    assert_equal payload, master.verify_token(token).raw
   end
 
   def test_verify_token_expired
@@ -36,17 +36,17 @@ class Kagishi::MasterTest < Minitest::Test
   end
 
   def test_payload
-    payload = { "email" => "abc@example.com", "foo" => "bar", "exp" => 1488392100 }
-    assert_equal payload, master.payload(token)
+    payload = { email: "abc@example.com", foo: "bar", exp: 1488392100 }
+    assert_equal payload, master.payload(token).raw
   end
 
   def test_payload_expired
     Kagishi.configure do |config|
       config.ttl = -1
     end
-    payload = { "email" => "abc@example.com", "exp" => 1488391199 }
+    payload = { email: "abc@example.com", exp: 1488391199 }
     token = master.issue_token("abc@example.com")
-    assert_equal payload, master.payload(token)
+    assert_equal payload, master.payload(token).raw
     Kagishi.configuration.reset
   end
 

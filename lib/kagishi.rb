@@ -4,6 +4,7 @@ require 'jwt'
 require_relative 'kagishi/version'
 require_relative 'kagishi/configuration'
 require_relative 'kagishi/master'
+require_relative 'kagishi/payload'
 
 module Kagishi
   def self.issue_token(email, payload: {})
@@ -21,6 +22,6 @@ module Kagishi
   private
 
     def self.master
-      @master ||= Kagishi::Master.new
+      @master ||= Master.new
     end
 end
