@@ -3,25 +3,19 @@ require 'jwt'
 
 require_relative 'kagishi/version'
 require_relative 'kagishi/configuration'
-require_relative 'kagishi/master'
-require_relative 'kagishi/payload'
+require_relative 'kagishi/issuer'
+require_relative 'kagishi/verifier'
 
 module Kagishi
-  def self.issue_token(email, payload: {})
-    master.issue_token(email, payload: payload)
+  def issue_token(email, payload: {})
+    Issuer.new(email, payload: payload).issue_token
   end
 
-  def self.verify_token(token)
-    master.verify_token(token)
+  def verify_token(token)
+    Verifier.new(token).verify_token
   end
 
-  def self.payload(token)
-    master.payload(token)
+  def payload(token)
+    Verifier.new(token).payload
   end
-
-  private
-
-    def self.master
-      @master ||= Master.new
-    end
 end
