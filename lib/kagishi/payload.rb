@@ -1,10 +1,11 @@
 module Kagishi
   class Payload
-    attr_reader :header
-    attr_reader :raw
-    def initialize(payload = {}, header: {})
+    attr_reader :raw, :header, :token
+
+    def initialize(payload = {}, header: {}, token: nil)
       @raw = symbolize_keys(payload)
       @header = symbolize_keys(header)
+      @token = token
     end
 
     def email

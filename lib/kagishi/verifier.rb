@@ -24,7 +24,7 @@ module Kagishi
       def parse(token, options: {})
         @payload ||= begin
           payload, header = JWT.decode token, secret, true, options
-          Payload.new(payload, header: header)
+          Payload.new(payload, header: header, token: token)
         rescue JWT::ExpiredSignature
           return nil
         end
