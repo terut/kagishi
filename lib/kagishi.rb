@@ -7,6 +7,8 @@ require_relative 'kagishi/issuer'
 require_relative 'kagishi/verifier'
 
 module Kagishi
+  include Configurable
+
   def issue_token(email, payload: {})
     Issuer.new(email, payload: payload).issue_token
   end

@@ -1,11 +1,17 @@
 module Kagishi
-  class << self
-    def configuration
-      @configuration ||= Configuration.new
+  module Configurable
+    def self.included(base)
+      base.extend ClassMethods
     end
 
-    def configure
-      yield(configuration)
+    module ClassMethods
+      def config
+        @configuration ||= Configuration.new
+      end
+
+      def configure
+        yield(config)
+      end
     end
   end
 

@@ -31,7 +31,7 @@ module Kagishi
       end
 
       def secret
-        Kagishi.configuration.secret
+        Kagishi.config.secret
       end
 
       def exp_leeway

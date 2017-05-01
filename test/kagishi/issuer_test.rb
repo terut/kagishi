@@ -14,7 +14,7 @@ class Kagishi::IssuerTest < Minitest::Test
 
   def teardown
     Timecop.return
-    Kagishi.configuration.reset
+    Kagishi.config.reset
   end
 
   def test_issue_token

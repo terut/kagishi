@@ -16,31 +16,31 @@ class Kagishi::VerifierTest < Minitest::Test
 
   def teardown
     Timecop.return
-    Kagishi.configuration.reset
+    Kagishi.config.reset
   end
 
   def test_verify_token
     assert_equal payload, verifier.verify_token.raw
-    Timecop.freeze(current_time + Kagishi.configuration.ttl - 1) do
+    Timecop.freeze(current_time + Kagishi.config.ttl - 1) do
       assert_equal payload, verifier.verify_token.raw
     end
   end
 
   def test_verify_token_expired
-    Timecop.freeze(current_time + Kagishi.configuration.ttl) do
+    Timecop.freeze(current_time + Kagishi.config.ttl) do
       assert_nil verifier.verify_token
     end
   end
 
   def test_payload
     assert_equal payload, verifier.payload.raw
-    Timecop.freeze(current_time + Kagishi.configuration.ttl + verifier.send(:exp_leeway) - 1) do
+    Timecop.freeze(current_time + Kagishi.config.ttl + verifier.send(:exp_leeway) - 1) do
       assert_equal payload, verifier.payload.raw
     end
   end
 
   def test_payload_expired
-    Timecop.freeze(current_time + Kagishi.configuration.ttl + verifier.send(:exp_leeway)) do
+    Timecop.freeze(current_time + Kagishi.config.ttl + verifier.send(:exp_leeway)) do
       assert_nil verifier.payload
     end
   end

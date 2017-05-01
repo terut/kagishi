@@ -15,15 +15,15 @@ module Kagishi
     private
 
       def algorithm
-        Kagishi.configuration.algorithm
+        Kagishi.config.algorithm
       end
 
       def secret
-        Kagishi.configuration.secret
+        Kagishi.config.secret
       end
 
       def ttl
-        Kagishi.configuration.ttl
+        Kagishi.config.ttl
       end
   end
 end
